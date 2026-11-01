@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import PageField from '../components/PageField.astro';
+import CallButton from '../components/CallButton.astro';
+import Icon from '../components/Icon.astro';
+import { phones } from '../data/site.js';
+---
+<Base title="Page not found">
+  <PageField cloth="teal" title="We can't find that page" lead="It may have moved. If you need help, you can still reach us straight away.">
+    <div class="nf">
+      <CallButton phone={phones.wish} label="Call The Wish Centre" />
+      <a class="btn btn--light" href="/">Back to the home page <Icon name="arrow" /></a>
+    </div>
+  </PageField>
+</Base>
+
+<style>
+  .nf { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-top: 2rem; }
+</style>

@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+const { phone, label, small = false } = Astro.props;
+---
+<a class:list={['call', { 'call--small': small }]} href={`tel:${phone.tel}`}>
+  <span class="call__text">
+    <span class="call__label">{label ?? `Call ${phone.label}`}</span>
+    <span class="call__number"><Icon name="phone" /> {phone.number}</span>
+  </span>
+</a>

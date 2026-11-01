@@ -1,0 +1,35 @@
+---
+import { site, phones, footerNav } from '../data/site.js';
+---
+<footer class="cloth cloth--teal foot">
+  <div class="wrap foot__grid">
+    <div class="foot__contact">
+      <p class="foot__name">{site.name}</p>
+      <address>{site.address.join(', ')}</address>
+      <p><a href={`tel:${phones.wish.tel}`}>{phones.wish.number}</a> · <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      <p class="soft">{site.hoursShort}. Outside these hours call the National Domestic Abuse Helpline on <a href={`tel:${phones.national.tel}`}>{phones.national.number}</a> (free, 24 hours).</p>
+    </div>
+    {footerNav.map((col) => (
+      <nav aria-label={col.heading}>
+        <h2 class="foot__h">{col.heading}</h2>
+        <ul>{col.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      </nav>
+    ))}
+  </div>
+  <div class="wrap foot__legal soft">
+    <p>The Wish Centre is a registered charitable company limited by guarantee. Company No. {site.companyNo} · Charity No. {site.charityNo}. Affiliated with Women's Aid Federation of England.</p>
+    <p>This site uses no tracking, analytics or advertising cookies.</p>
+  </div>
+</footer>
+<style>
+  .foot { padding: var(--section) 0 2rem; }
+  .foot__grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 2.5rem; }
+  .foot__name { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; margin-bottom: 0.5rem; }
+  address { font-style: normal; margin-bottom: 1em; }
+  .foot__h { font-size: 1.05rem; letter-spacing: 0; margin-bottom: 0.8rem; color: var(--on-teal-soft); }
+  .foot ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.45rem; }
+  .foot__legal { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid color-mix(in srgb, currentColor 35%, transparent); font-size: 0.92rem; }
+  .foot__legal p { max-width: none; margin-bottom: 0.4em; }
+  @media (max-width: 900px) { .foot__grid { grid-template-columns: 1fr 1fr; } .foot__contact { grid-column: 1 / -1; } }
+  @media (max-width: 480px) { .foot__grid { grid-template-columns: 1fr; } }
+</style>

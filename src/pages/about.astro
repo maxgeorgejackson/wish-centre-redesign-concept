@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import PageField from '../components/PageField.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site.js';
+---
+<Base title="About us" description="The Wish Centre has supported people affected by domestic abuse in Blackburn with Darwen since 1989. Our story, team, governance and accreditations.">
+  <PageField cloth="teal" title={`Supporting survivors in ${site.area} since ${site.founded}`} lead="We support anyone who has experienced, or is at risk of, domestic abuse, through safe accommodation, practical support, advocacy and specialist advice." />
+
+  <section class="section">
+    <div class="wrap split">
+      <h2>Our story</h2>
+      <div>
+        <p>The Wish Centre was founded in 1989 as Blackburn and Darwen District Women's Aid by local women who saw gaps in domestic abuse support. We employed our first member of staff in 1990 and opened a refuge for women and children in 1991. In 1998 The Wish Centre was formally established as an expanded community base, and we have grown ever since.</p>
+        <h3>Our mission</h3>
+        <p>We promote safety, recovery and long-term independence for individuals and families. Domestic abuse can affect anyone, but it disproportionately affects women and girls. We have been affiliated with Women's Aid Federation of England since the early 1990s, and we make sure everyone who asks for help gets support that fits them.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cloth cloth--cotton section">
+    <div class="wrap about-photo">
+      <img src="/images/hr-training-event.jpg" alt="A Wish Centre training event" width="772" height="540" loading="lazy" />
+      <div>
+        <h2>Our team</h2>
+        <p>We are led by Chief Executive <strong>Shigufta Khan</strong>, an experienced practitioner, qualified IDVA and recognised expert in honour-based abuse and forced marriage, who has been with us since 2007, and <strong>Steph Sayers</strong>, Head of People and Culture.</p>
+        <p>Our frontline teams include Independent Domestic Violence Advisors, Independent Sexual Violence Advisors, youth workers, behaviour change practitioners and counselling and wellbeing practitioners, alongside our refuge and outreach teams. Our strength is our people: professional expertise, specialist training and lived experience together.</p>
+        <a class="btn btn--ink" href="/work-volunteer/">Work or volunteer with us <Icon name="arrow" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <h2>Governance</h2>
+      <div>
+        <p>We are a registered charity and company limited by guarantee (Company No. {site.companyNo}, Charity No. {site.charityNo}), governed by 9 trustees from a range of professional backgrounds who meet quarterly to review performance and strategy. Three sub-committees, Finance and Audit, People and Culture, and Operational, Resources and Impact, oversee specific areas, with working groups for safeguarding and health and safety as needed.</p>
+        <p>We follow the Charity Governance Code, with policies on safeguarding, equity and diversity, data protection and financial management, reviewed regularly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cloth cloth--teal section">
+    <div class="wrap split">
+      <h2>Accreditations</h2>
+      <ul class="rows">
+        <li><span class="swatch" style="--sw: var(--marigold)"></span><h3>Investors in People</h3><p class="soft">Excellence in people management.</p></li>
+        <li><span class="swatch" style="--sw: var(--marigold)"></span><h3>Investing in Children</h3><p class="soft">Actively involving children and young people in decisions that affect them.</p></li>
+        <li><span class="swatch" style="--sw: var(--marigold)"></span><h3>GSK Impact Award</h3><p class="soft">One of only ten recipients nationwide, April 2021.</p></li>
+        <li><span class="swatch" style="--sw: var(--marigold)"></span><h3>Bronze Trauma-Informed Quality Mark</h3><p class="soft">Recognising trauma-informed practice across our services, culture and ways of working.</p></li>
+        <li><span class="swatch" style="--sw: var(--marigold)"></span><h3>Respect accreditation</h3></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <h2>Our supporters</h2>
+      <p>Haydock Finance has supported us generously for many years, including transforming our refuge garden. We are always glad to hear from local businesses who want to partner with us: see <a href="/support-us/#partners">Support us</a>.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about-photo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+  .about-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  @media (max-width: 820px) { .about-photo { grid-template-columns: 1fr; } }
+</style>

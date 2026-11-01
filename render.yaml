@@ -1,0 +1,24 @@
+# Render Blueprint: deploys this repo as a free Static Site (same setup as loorg-website and tig-website).
+# In Render: New > Blueprint, point it at this repo. Or configure manually:
+# Build Command `npm install && npm run build`, Publish Directory `dist`.
+services:
+  - type: web
+    name: wish-centre-website
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    # Custom domain (thewishcentre.org): add via the Render dashboard, not here.
+    routes:
+      - type: rewrite
+        source: /404
+        destination: /404.html
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: Referrer-Policy
+        value: no-referrer
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff

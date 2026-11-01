@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import PageField from '../components/PageField.astro';
+import resources from '../data/resources.json';
+
+const isPlaceholder = (u) => !u || u === 'PLACEHOLDER';
+---
+<Base title="Resources and helplines" description="Factsheets in eight languages and useful helpline numbers, from The Wish Centre and the #NoExcuseForAbuse campaign.">
+  <PageField cloth="madder" title="Resources and helplines" lead="Materials for survivors, children and young people, and professionals, part of the #NoExcuseForAbuse campaign run with police, councils and support agencies across the region." selvedge="#NoExcuseForAbuse" />
+
+  <section class="section">
+    <div class="wrap split">
+      <h2>Factsheets</h2>
+      <ul class="rows">
+        {resources.factsheets.map((f) => (
+          <li>
+            <span class="swatch" style="--sw: var(--madder)"></span>
+            <h3>{f.title}</h3>
+            <div><p>{f.body}</p>{isPlaceholder(f.url) ? <span class="placeholder">PLACEHOLDER: download link</span> : <a href={f.url}>Download</a>}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="cloth cloth--cotton section">
+    <div class="wrap split">
+      <div>
+        <h2>Other helplines</h2>
+        <p>For the shortest list of urgent numbers, see <a href="/need-help/">I need help</a>. More at <a href="https://www.noexcuseforabuse.co.uk" rel="noreferrer">noexcuseforabuse.co.uk</a>.</p>
+      </div>
+      <ul class="phones">
+        {resources.numbers.map((n) => (
+          <li>
+            <span><strong>{n.name}</strong>{n.note && <span class="note">{n.note}</span>}</span>
+            <span class="num">{n.tel ? <a href={`tel:${n.tel}`}>{n.number}</a> : <a href={`sms:${n.sms}`}>{n.number}</a>}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>

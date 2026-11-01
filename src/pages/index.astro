@@ -1,0 +1,283 @@
+---
+import Base from '../layouts/Base.astro';
+import Selvedge from '../components/Selvedge.astro';
+import CallButton from '../components/CallButton.astro';
+import Icon from '../components/Icon.astro';
+import { site, phones } from '../data/site.js';
+import services from '../data/services.json';
+import giving from '../data/giving.json';
+
+const helpServices = services.filter((s) => s.help);
+const swatches = ['var(--madder)', 'var(--teal)', 'var(--indigo)', 'var(--saffron)', 'var(--madder)', 'var(--teal)'];
+const tickets = giving.amounts.filter((a) => ['£5', '£15', '£60', '£150'].includes(a.amount));
+
+const bolts = [
+  {
+    cloth: 'madder', name: 'I need help', sub: 'Refuge, outreach and staying safe', href: '/need-help/',
+    edge: 'Refuge · Outreach · IDVA · Counselling',
+    more: [
+      { href: '/need-help/#danger', label: 'Am I in danger?' },
+      { href: '/services/', label: 'All our services' },
+      { href: '/resources/', label: 'Other helplines' },
+    ],
+  },
+  {
+    cloth: 'saffron', name: 'Training', sub: 'Schools, employers and professionals', href: '/learning-community/',
+    edge: 'Schools · HR · CPD · Community',
+    more: [
+      { href: '/learning-community/#enquire', label: 'Enquire about training' },
+      { href: '/resources/', label: 'Factsheets' },
+    ],
+  },
+  {
+    cloth: 'indigo', name: 'Support us', sub: 'Give, fundraise or partner with us', href: '/support-us/',
+    edge: 'Donate · Fundraise · Partner · Volunteer',
+    more: [
+      { href: '/support-us/#give', label: 'Ways to give' },
+      { href: '/work-volunteer/', label: 'Work or volunteer' },
+      { href: '/survivor-stories/', label: 'Survivor stories' },
+    ],
+  },
+];
+---
+<Base>
+  <!-- First viewport: help is the first bolt of cloth -->
+  <section class="cloth cloth--teal hero">
+    <Selvedge text={site.strapline} />
+    <div class="wrap hero__grid">
+      <div class="hero__help">
+        <h1>Talk to us. It's free, and it stays between us.</h1>
+        <p class="lead soft">Refuge, advice and support for anyone affected by domestic abuse in {site.area}. We have been here since {site.founded}.</p>
+        <CallButton phone={phones.wish} label="Call The Wish Centre" />
+        <ul class="hero__alt">
+          <li><span class="soft">Open</span> {site.hoursShort}</li>
+          <li><span class="soft">Any time, free</span> <a href={`tel:${phones.national.tel}`}>{phones.national.number}</a> National Domestic Abuse Helpline</li>
+          <li><span class="soft">Men's Advice Line</span> <a href={`tel:${phones.mens.tel}`}>{phones.mens.number}</a></li>
+          <li><span class="soft">In immediate danger</span> <a href="tel:999">999</a></li>
+        </ul>
+      </div>
+
+      <ul class="bolts" aria-label="Ways in">
+        {bolts.map((b) => (
+          <li class:list={['bolt', `cloth--${b.cloth}`]}>
+            <span class="bolt__edge" aria-hidden="true">{b.edge}</span>
+            <a class="bolt__main" href={b.href}>
+              <span class="bolt__name">{b.name}</span>
+              <span class="bolt__sub soft">{b.sub}</span>
+            </a>
+            <ul class="bolt__more">
+              {b.more.map((m) => <li><a href={m.href}>{m.label}<Icon name="arrow" /></a></li>)}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- How we can help -->
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <h2>How we can help</h2>
+        <p>Whoever you are, whatever has happened. You do not need to be sure it "counts" to talk to us.</p>
+        <a class="btn btn--ink" href="/services/">All services <Icon name="arrow" /></a>
+      </div>
+      <ul class="rows">
+        {helpServices.map((s, i) => (
+          <li>
+            <span class="swatch" style={`--sw: ${swatches[i % swatches.length]}`}></span>
+            <h3><a href={`/services/#${s.id}`}>{s.name}</a></h3>
+            <p>{s.short}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Who we are: photographs as pieces at different scales -->
+  <section class="cloth cloth--cotton section story">
+    <div class="wrap story__grid">
+      <figure class="story__big">
+        <img src="/images/refuge.jpg" alt="A mother holding her young daughter close" width="1560" height="867" loading="lazy" />
+      </figure>
+      <figure class="story__small">
+        <img src="/images/young-people-groups.jpg" alt="Young people taking part in a group session" width="772" height="540" loading="lazy" />
+      </figure>
+      <div class="story__text">
+        <h2>Here in Blackburn since {site.founded}</h2>
+        <p>Local women set up Blackburn and Darwen District Women's Aid in 1989. We opened our first refuge in 1991 and have grown into a full service: refuge, advocacy, outreach, counselling, recovery programmes and work with children and young people.</p>
+        <p>We are affiliated with Women's Aid Federation of England, and we help anyone affected by domestic abuse.</p>
+        <ul class="marks">
+          <li>Investors in People</li>
+          <li>Investing in Children</li>
+          <li>Respect accreditation</li>
+          <li>Bronze Trauma-Informed Quality Mark</li>
+          <li>GSK Impact Award, 2021</li>
+        </ul>
+        <a class="btn btn--ink" href="/about/">About The Wish Centre <Icon name="arrow" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Training -->
+  <section class="cloth cloth--saffron band">
+    <Selvedge text="Schools · Employers · Professionals · CPD" />
+    <div class="wrap band__grid section">
+      <h2>Training that helps people spot the signs, and respond well</h2>
+      <div>
+        <p>We train schools, colleges, HR teams and frontline professionals across {site.area}, from healthy-relationships workshops to bespoke CPD.</p>
+        <a class="btn btn--ink" href="/learning-community/">Training and workshops <Icon name="arrow" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support: swing tickets -->
+  <section class="cloth cloth--indigo band">
+    <Selvedge text="Donate · Fundraise · Partner" />
+    <div class="wrap section">
+      <div class="band__grid">
+        <h2>What a gift buys</h2>
+        <div>
+          <p class="soft">Every donation goes into something a family needs, often on the day they arrive in refuge.</p>
+          <a class="btn btn--light" href="/support-us/">Ways to support us <Icon name="arrow" /></a>
+        </div>
+      </div>
+      <ul class="tickets">
+        {tickets.map((t) => (
+          <li class="ticket">
+            <span class="ticket__amount">{t.amount}</span>
+            <span class="ticket__buys">{t.buys}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Close: for people not ready to call -->
+  <section class="section">
+    <div class="wrap split">
+      <h2>Not ready to call yet?</h2>
+      <div>
+        <ul class="rows rows--links">
+          <li><span class="swatch" style="--sw: var(--madder)"></span><h3><a href="/need-help/#danger">Am I in danger? A quick check</a></h3><p>Signs that you may be at higher risk, and who to call.</p></li>
+          <li><span class="swatch" style="--sw: var(--teal)"></span><h3><a href="/need-help/#browse">How to browse safely</a></h3><p>Private windows, clearing history and the Exit button.</p></li>
+          <li><span class="swatch" style="--sw: var(--indigo)"></span><h3><a href="/need-help/#what">What is domestic abuse?</a></h3><p>It isn't only physical. Emotional, financial, sexual and coercive control all count.</p></li>
+        </ul>
+        <p class="note">We can arrange an interpreter in Urdu, Punjabi, Polish and other languages. Call and ask.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    min-height: min(44rem, calc(100svh - var(--exit-h) - 5.25rem - 2rem));
+  }
+  .hero__help { padding-block: clamp(2rem, 4vw, 3.25rem); align-self: center; }
+  .hero__help h1 { font-size: clamp(2.5rem, 1.6rem + 3.2vw, 4.4rem); }
+  .hero__help h1 { max-width: 15ch; margin-bottom: 0.35em; }
+  .hero__help .lead { max-width: 44ch; margin-bottom: 1.6rem; }
+  .hero__alt { list-style: none; padding: 0; margin: 1.4rem 0 0; display: grid; gap: 0.25rem; font-size: 1.05rem; }
+  .hero__alt li { max-width: none; }
+  .hero__alt .soft { display: inline-block; min-width: 9.5rem; }
+  .hero__alt a { font-weight: 700; white-space: nowrap; }
+
+  /* ---------- Bolts ---------- */
+  .bolts { list-style: none; margin: 0 calc(-1 * max(var(--gutter), (100vw - var(--wrap)) / 2)) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
+  .bolt {
+    position: relative; display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 1.25rem 1.1rem 1.5rem;
+    overflow: hidden;
+  }
+  .bolt__edge {
+    position: absolute; top: 1.1rem; right: 0.55rem;
+    writing-mode: vertical-rl;
+    font-family: var(--font-display); font-weight: 700; font-size: 0.7rem;
+    letter-spacing: 0.2em; text-transform: uppercase; font-variation-settings: 'wdth' 80;
+    color: var(--soft); white-space: nowrap;
+    border-left: 2px dotted currentColor; padding-left: 0.3rem;
+  }
+  .bolt__main { text-decoration: none; display: block; padding-right: 1.2rem; }
+  .bolt__main::after { content: ''; position: absolute; inset: 0; z-index: 0; }
+  .bolt__name {
+    display: block; font-family: var(--font-display); font-weight: 800;
+    font-size: clamp(1.45rem, 1rem + 1.1vw, 2.05rem); line-height: 1.02; letter-spacing: -0.02em;
+    font-variation-settings: 'wdth' 88; margin-bottom: 0.45rem;
+  }
+  .bolt__sub { display: block; font-size: 0.98rem; line-height: 1.35; }
+  .bolt__more { list-style: none; padding: 0; margin: 1rem 0 0; position: relative; z-index: 1; border-top: 2px solid currentColor; }
+  .bolt__more li { border-bottom: 1px solid color-mix(in srgb, currentColor 35%, transparent); }
+  .bolt__more a { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; padding: 0.5rem 0; font-weight: 700; font-size: 0.98rem; text-decoration: none; }
+  .bolt__more a:hover { text-decoration: underline; }
+  .bolt__more :global(svg) { width: 1rem; height: 1rem; flex: none; }
+
+  /* Signature: the bolt unrolls its sub-links on hover or focus. */
+  @media (hover: hover) and (min-width: 901px) {
+    .bolt__more {
+      clip-path: inset(0 0 100% 0);
+      max-height: 0; margin-top: 0; opacity: 0;
+      transition: clip-path 420ms var(--ease-out), max-height 420ms var(--ease-out), margin-top 420ms var(--ease-out), opacity 200ms linear;
+    }
+    .bolt:hover .bolt__more, .bolt:focus-within .bolt__more {
+      clip-path: inset(0 0 0 0); max-height: 12rem; margin-top: 1rem; opacity: 1;
+    }
+    .bolt { transition: padding-bottom 420ms var(--ease-out); }
+    .bolt:hover, .bolt:focus-within { padding-bottom: 2.25rem; }
+  }
+
+  @media (max-width: 900px) {
+    .hero__grid { grid-template-columns: 1fr; min-height: 0; gap: 0; }
+    .hero__help { padding-bottom: 2.5rem; }
+    .bolts { grid-template-columns: 1fr; margin-inline: calc(-1 * var(--gutter)); }
+    .bolt { padding: 1.4rem var(--gutter); }
+    .bolt__edge { display: none; }
+  }
+
+  /* ---------- Story ---------- */
+  .story__grid {
+    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto auto; gap: 1.5rem clamp(1.5rem, 3vw, 3rem);
+  }
+  .story figure { margin: 0; }
+  .story__big { grid-column: 1 / 8; grid-row: 1; }
+  .story__big img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+  .story__small { grid-column: 5 / 8; grid-row: 2; margin-top: -6rem !important; border: 10px solid var(--cotton); }
+  .story__small img { aspect-ratio: 1; object-fit: cover; width: 100%; }
+  .story__text { grid-column: 8 / 13; grid-row: 1 / 3; align-self: center; }
+  .marks { list-style: none; padding: 0; margin: 1.5rem 0 2rem; border-top: 2px solid var(--ink); }
+  .marks li { padding: 0.55rem 0; border-bottom: 1px solid var(--rule); font-weight: 700; }
+  @media (max-width: 900px) {
+    .story__big, .story__text { grid-column: 1 / -1; }
+    .story__small { grid-column: 6 / -1; grid-row: 2; }
+    .story__text { grid-row: 3; }
+  }
+
+  /* ---------- Bands ---------- */
+  .band__grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 1.5rem clamp(2rem, 5vw, 5rem); align-items: end; }
+  .band__grid h2 { margin: 0; max-width: 18ch; }
+  @media (max-width: 820px) { .band__grid { grid-template-columns: 1fr; } }
+
+  /* ---------- Swing tickets ---------- */
+  .tickets { list-style: none; padding: 0; margin: clamp(2.5rem, 5vw, 4rem) 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .ticket {
+    position: relative; background: var(--paper); color: var(--ink);
+    padding: 2.6rem 1.25rem 1.4rem;
+    clip-path: polygon(14% 0, 86% 0, 100% 9%, 100% 100%, 0 100%, 0 9%);
+    transform: rotate(var(--tilt, -1.2deg)); transform-origin: 50% 0;
+  }
+  .ticket:nth-child(2n) { --tilt: 1deg; }
+  .ticket:nth-child(3n) { --tilt: -0.4deg; }
+  .ticket::before {
+    content: ''; position: absolute; top: 0.9rem; left: 50%; width: 0.8rem; height: 0.8rem; margin-left: -0.4rem;
+    border-radius: 50%; background: var(--indigo);
+  }
+  .ticket__amount { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(2.2rem, 1.6rem + 1.6vw, 3rem); line-height: 1; font-variation-settings: 'wdth' 88; margin-bottom: 0.5rem; }
+  .ticket__buys { display: block; font-size: 1rem; line-height: 1.4; }
+  @media (max-width: 900px) { .tickets { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 420px) { .tickets { grid-template-columns: 1fr; } }
+
+  .note { margin-top: 1.5rem; font-weight: 700; }
+</style>

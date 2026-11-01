@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import PageField from '../components/PageField.astro';
+import CallButton from '../components/CallButton.astro';
+import { site, phones } from '../data/site.js';
+---
+<Base title="Contact us" description="Contact The Wish Centre in Blackburn: phone, email, address and opening hours.">
+  <PageField cloth="teal" title="Contact us" lead="If you're in crisis, please use the numbers on our I need help page. They are staffed for urgent support.">
+    <p style="margin-top:2rem"><CallButton phone={phones.wish} label="Call The Wish Centre" /></p>
+  </PageField>
+
+  <section class="section">
+    <div class="wrap contact">
+      <div>
+        <h2>General enquiries</h2>
+        <ul class="phones">
+          <li><strong>Phone</strong><span class="num"><a href={`tel:${phones.wish.tel}`}>{phones.wish.number}</a></span></li>
+          <li><strong>Email</strong><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          {site.hours.map((h) => <li><strong>{h.days}</strong><span>{h.time}</span></li>)}
+        </ul>
+        <h3 style="margin-top:2rem">Address</h3>
+        <address>{site.name}<br />{site.address.map((l) => <>{l}<br /></>)}</address>
+      </div>
+      <div>
+        <h2>Outside office hours</h2>
+        <ul class="phones">
+          {[phones.national, phones.mens, phones.emergency].map((p) => (
+            <li><span><strong>{p.label}</strong><span class="note">{p.note}</span></span><span class="num"><a href={`tel:${p.tel}`}>{p.number}</a></span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); }
+  address { font-style: normal; }
+  @media (max-width: 820px) { .contact { grid-template-columns: 1fr; } }
+</style>

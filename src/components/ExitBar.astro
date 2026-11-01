@@ -1,0 +1,35 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site.js';
+---
+<div class="exitbar" role="region" aria-label="Quick exit">
+  <p class="exitbar__msg">In danger now? Call <a href="tel:999">999</a>. <span class="exitbar__esc">Press <kbd>Esc</kbd> to leave this site fast.</span></p>
+  <a class="exitbar__btn" href={site.exitUrl} data-exit rel="noreferrer">
+    <span>Exit site</span><Icon name="exit" />
+  </a>
+</div>
+<style>
+  .exitbar {
+    position: sticky; top: 0; z-index: 50;
+    min-height: var(--exit-h);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    background: var(--ink); color: #e7e8ea;
+    padding: 0 0 0 var(--gutter);
+    font-size: 0.95rem;
+  }
+  .exitbar__msg { margin: 0; max-width: none; padding-block: 0.5rem; }
+  .exitbar__msg a { color: #fff; font-weight: 700; }
+  kbd { font-family: inherit; font-weight: 700; border: 1px solid #8a8f99; padding: 0 0.3em; }
+  .exitbar__btn {
+    align-self: stretch; flex: none;
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    background: var(--marigold); color: var(--ink);
+    padding: 0 clamp(1rem, 3vw, 1.75rem);
+    font-family: var(--font-display); font-weight: 800; font-size: 1.05rem;
+    font-variation-settings: 'wdth' 90;
+    text-decoration: none;
+  }
+  .exitbar__btn:hover { background: var(--marigold-hover); }
+  .exitbar__btn :global(svg) { width: 1.15rem; height: 1.15rem; }
+  @media (max-width: 640px) { .exitbar__esc { display: none; } }
+</style>

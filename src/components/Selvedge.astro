@@ -1,0 +1,8 @@
+---
+// The printed edge of a bolt of cloth: a repeating line of small caps.
+const { text, tone = '' } = Astro.props;
+const words = Array.from({ length: 8 }, () => text);
+---
+<div class:list={['selvedge', tone]} aria-hidden="true">
+  {words.map((w) => <span>{w}</span>)}
+</div>

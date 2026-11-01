@@ -1,0 +1,14 @@
+---
+// Small authored icon set, one 2px stroke weight throughout.
+const { name, label } = Astro.props;
+const paths = {
+  phone: '<path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/>',
+  arrow: '<path d="M4 12h15M13 6l6 6-6 6"/>',
+  exit: '<path d="M14 4h5v16h-5M10 8l-4 4 4 4M6 12h10"/>',
+  menu: '<path d="M3 6h18M3 12h18M3 18h18"/>',
+  mail: '<path d="M3 5h18v14H3zM3 6l9 7 9-7"/>',
+};
+---
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"
+  aria-hidden={label ? undefined : 'true'} role={label ? 'img' : undefined} aria-label={label}
+  set:html={paths[name]} />

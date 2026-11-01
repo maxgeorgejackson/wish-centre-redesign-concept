@@ -1,0 +1,25 @@
+{
+  "amounts": [
+    { "amount": "£5", "buys": "a personal attack alarm" },
+    { "amount": "£10", "buys": "a window or door alarm, or a school holiday activity for a child in refuge" },
+    { "amount": "£15", "buys": "a safe mobile phone and SIM card" },
+    { "amount": "£30", "buys": "an hour of therapeutic art with a child" },
+    { "amount": "£60", "buys": "a welcome pack for a family arriving in refuge with nothing" },
+    { "amount": "£100", "buys": "an essentials pack for a family coming into refuge" },
+    { "amount": "£150", "buys": "a voucher for furniture or white goods for a family moving into a safe home" },
+    { "amount": "£5,000", "buys": "a post delivering therapeutic support to children, in refuge and the community" }
+  ],
+  "textCodes": [
+    { "code": "70201", "amount": "£1" },
+    { "code": "70331", "amount": "£3" },
+    { "code": "70970", "amount": "£5" },
+    { "code": "70191", "amount": "£10" }
+  ],
+  "donateUrl": "PLACEHOLDER",
+  "justGivingUrl": "PLACEHOLDER",
+  "contacts": [
+    { "role": "Partnerships", "name": "Rebekah Wilson", "email": "Rebekah.wilson@thewishcentre.org", "phone": "01254 260465", "tel": "01254260465" },
+    { "role": "Patron enquiries", "name": "Alison Partington", "email": "Alison.Partington@thewishcentre.org" },
+    { "role": "Fundraising", "email": "fundraising@thewishcentre.org" }
+  ]
+}

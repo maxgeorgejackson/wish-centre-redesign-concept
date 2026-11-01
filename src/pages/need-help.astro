@@ -1,0 +1,100 @@
+---
+// Kept light and image-free on purpose: loads fast on low data or a shared phone.
+import Base from '../layouts/Base.astro';
+import PageField from '../components/PageField.astro';
+import CallButton from '../components/CallButton.astro';
+import Icon from '../components/Icon.astro';
+import { phones } from '../data/site.js';
+import services from '../data/services.json';
+
+const help = services.filter((s) => ['refuge', 'outreach', 'idva', 'children'].includes(s.id));
+const lines = [phones.wish, phones.national, phones.mens, phones.emergency];
+---
+<Base title="I need help" description="Free, confidential support if you are affected by domestic abuse in Blackburn with Darwen. Phone numbers, safety planning and a quick way to leave this site.">
+  <PageField cloth="madder" title="You are not alone, and this is confidential" lead="Whatever is happening, you don't have to work it out by yourself. These lines are free, and in most cases won't show on an itemised phone bill." selvedge="Free · Confidential · Non-judgemental">
+    <div class="calls">
+      <CallButton phone={phones.wish} label="Call The Wish Centre" />
+      <CallButton phone={phones.national} label="24-hour National Helpline" />
+    </div>
+  </PageField>
+
+  <section class="section">
+    <div class="wrap split">
+      <h2>Numbers to call</h2>
+      <ul class="phones">
+        {lines.map((p) => (
+          <li>
+            <span><strong>{p.label}</strong><span class="note">{p.note}</span></span>
+            <span class="num"><a href={`tel:${p.tel}`}>{p.number}</a></span>
+          </li>
+        ))}
+        <li>
+          <span><strong>Refuge referrals</strong><span class="note">{phones.refuge.note}</span></span>
+          <span class="num"><a href={`tel:${phones.refuge.tel}`}>{phones.refuge.number}</a></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cloth cloth--cotton section">
+    <div class="wrap split">
+      <h2>How we can help</h2>
+      <div>
+        <ul class="rows">
+          {help.map((s) => (
+            <li>
+              <span class="swatch" style="--sw: var(--madder)"></span>
+              <h3>{s.name}</h3>
+              <p>{s.body}</p>
+            </li>
+          ))}
+        </ul>
+        <p style="margin-top:1.5rem"><a class="btn btn--ink" href="/services/">Counselling, recovery and all services <Icon name="arrow" /></a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <h2>Staying safe</h2>
+        <p>Whether you are planning to leave or staying for now.</p>
+      </div>
+      <div>
+        <details class="fold" id="danger" open>
+          <summary>Am I in danger? A quick check</summary>
+          <div>
+            <p>You may be at higher risk if your partner or ex-partner:</p>
+            <ul>
+              <li>has threatened to kill you or your children</li>
+              <li>has strangled, choked or used a weapon against you</li>
+              <li>monitors your phone, messages or movements</li>
+              <li>has recently separated from you, or you are planning to leave</li>
+            </ul>
+            <p>Or if you feel afraid to go home. If any of this sounds familiar, please call the National Domestic Abuse Helpline on <a href={`tel:${phones.national.tel}`}>{phones.national.number}</a>. It is free, and they will listen without judgement. If you are in immediate danger, call <a href="tel:999">999</a>.</p>
+          </div>
+        </details>
+        <details class="fold" id="browse">
+          <summary>How do I browse safely and clear my history?</summary>
+          <div>
+            <p>On most phones and computers you can open a private or incognito window, or clear your browser history afterwards in Settings. If someone might check your device, consider using a library computer or a friend's phone.</p>
+            <p>The yellow Exit site button at the top of every page, or the Esc key, takes you straight to a weather page and replaces this page in your history.</p>
+          </div>
+        </details>
+        <details class="fold" id="what">
+          <summary>What is domestic abuse?</summary>
+          <div>
+            <p>Domestic abuse isn't only physical. It can be emotional, financial, sexual or coercive control: a pattern of behaviour used to frighten, isolate or control a partner, ex-partner or family member.</p>
+            <p>If something doesn't feel right, it's worth talking it through, even if you're not sure it "counts".</p>
+          </div>
+        </details>
+        <p class="lang"><strong>Other languages:</strong> we can arrange an interpreter in Urdu, Punjabi, Polish and other languages. Call us and ask.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .calls { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.25rem; }
+  .lang { margin-top: 2rem; }
+</style>

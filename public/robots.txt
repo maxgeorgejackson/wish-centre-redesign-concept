@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+# PLACEHOLDER: update the domain once thewishcentre.org points here.
+Sitemap: https://wish-centre-website.onrender.com/sitemap-index.xml

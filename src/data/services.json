@@ -1,0 +1,59 @@
+[
+  {
+    "id": "refuge",
+    "name": "Refuge",
+    "short": "Safe, self-contained homes for women and children who need to leave now.",
+    "body": "Safe, self-contained flats or houses with a shared garden and 24-hour CCTV, for women and children fleeing abuse. Self-refer or ask an agency to refer you on 01254 55300.",
+    "help": true
+  },
+  {
+    "id": "outreach",
+    "name": "Outreach support",
+    "short": "Help to rebuild confidence and keep your home if you live independently.",
+    "body": "Community-based support to rebuild confidence and sustain a tenancy, covering welfare benefits, housing, employment and the justice system.",
+    "help": true
+  },
+  {
+    "id": "idva",
+    "name": "IDVA service",
+    "short": "An advocate beside you through safety planning, police and court.",
+    "body": "Accredited Independent Domestic Violence Advocates offering safety and wellbeing planning, trauma-informed court accompaniment, help preparing victim impact statements, and home safety assessments. Includes a specialist BAME IDVA, an Independent Stalking Advocacy Caseworker, an Over 55s service (\"Open Doors\"), and Operation Provide working alongside police. Professionals refer through the Adult Initial Referral Form.",
+    "help": true
+  },
+  {
+    "id": "children",
+    "name": "Children and young people",
+    "short": "One-to-one and group support, including play therapy, so children feel safe again.",
+    "body": "Young People's Programmes, a Young Person's IDVA, education work in schools, and a dedicated route for young people experiencing abuse themselves. One-to-one and group sessions, including play therapy, help children understand their experiences and feel safe again.",
+    "help": true
+  },
+  {
+    "id": "counselling",
+    "name": "Counselling",
+    "short": "Eight confidential sessions, in Blackburn or online.",
+    "body": "Eight 50-minute confidential sessions, in Blackburn or online via Teams, for anyone aged 18 or over living in Blackburn with Darwen who has experienced domestic abuse and is no longer in immediate crisis. Delivered by qualified and trainee volunteer counsellors. Contact andrea.ryan@thewishcentre.org.",
+    "help": true
+  },
+  {
+    "id": "recovery",
+    "name": "Recovery programmes",
+    "short": "AIM and the Recovery Toolkit: understanding what happened and building coping skills.",
+    "body": "AIM (Awareness, Insight, Motivation) helps survivors understand the beliefs held by abusive partners, recognise similar beliefs they may have taken on, and build safety strategies for themselves and their children. It runs as a group for women and one-to-one for male survivors. The Recovery Toolkit runs up to 22 sessions building practical coping skills and resilience. Both are open to Blackburn with Darwen residents.",
+    "help": true
+  },
+  {
+    "id": "behaviour-change",
+    "name": "Behaviour change programme",
+    "short": "Make The Change, for men who recognise they are being abusive.",
+    "body": "Make The Change is a voluntary 16 to 22 week programme (not anger management) for men who recognise they are using power and control to abuse a female partner. It is challenging and participative, grounded in Duluth and integrated domestic abuse models, and supported by Blackburn with Darwen Borough Council. Self-referral or professional referral to info@thewishcentre.org.",
+    "help": false
+  },
+  {
+    "id": "training",
+    "name": "Training",
+    "short": "Ready-made or bespoke domestic abuse training for organisations.",
+    "body": "Ready-made or bespoke domestic abuse training for organisations, including HR and employer training and CPD.",
+    "help": false,
+    "link": "/learning-community/"
+  }
+]

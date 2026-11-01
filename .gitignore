@@ -1,0 +1,18 @@
+# build output
+dist/
+# dependencies
+node_modules/
+# astro
+.astro/
+# logs & env
+npm-debug.log*
+.env
+.env.production
+# os
+.DS_Store
+# impeccable local working files
+.impeccable/decision/
+.impeccable/review/
+.impeccable/config.local.json
+# local Claude skills (installed per machine, not committed; see README)
+.claude/

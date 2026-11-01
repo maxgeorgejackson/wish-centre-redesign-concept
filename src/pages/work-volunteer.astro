@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import PageField from '../components/PageField.astro';
+import { site } from '../data/site.js';
+---
+<Base title="Work or volunteer" description="Jobs, volunteering, student counselling placements and becoming an ally with The Wish Centre in Blackburn with Darwen.">
+  <PageField cloth="teal" title="Work or volunteer with us" lead={`We are always glad to hear from people who want to support survivors in ${site.area}, as staff, volunteers or student counsellors.`} />
+
+  <section class="section">
+    <div class="wrap split">
+      <h2>Current vacancies</h2>
+      <div>
+        <p>There are no vacancies at the moment. Join our mailing list to hear as soon as a role opens.</p>
+        <span class="placeholder">PLACEHOLDER: mailing list sign-up not connected</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cloth cloth--cotton section">
+    <div class="wrap split">
+      <h2>Volunteers and peer mentors</h2>
+      <div>
+        <p>Volunteering is a good way to gain experience and support your local community. Our volunteers and peer mentors bring a wide range of skills to help us deliver services for survivors and their families, with full training, support and guidance in return. If you have a few hours each week, or would like to help us fundraise now and then, we'd love to hear from you.</p>
+        <span class="placeholder">PLACEHOLDER: volunteer application form link</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <h2>Student counsellors</h2>
+      <div>
+        <p>We welcome counselling student placements. Students attend a full-day induction (held quarterly, with around 2 to 4 students per intake), complete online training, and provide DBS, insurance, fitness-to-practise and supervisor details. Most work with up to 4 clients a week, face to face in Blackburn or online. We welcome difference and diversity in modality, age, gender, language and ethnicity.</p>
+        <p>We are not recruiting student counsellors at the moment. Counselling Coordinator Andrea Ryan will contact applicants when places open: <a href="mailto:andrea.ryan@thewishcentre.org">andrea.ryan@thewishcentre.org</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cloth cloth--saffron section">
+    <div class="wrap split">
+      <h2>Become an ally</h2>
+      <div>
+        <p>Can't commit to regular hours? Our trustees invite people to become Allies instead, supporting us when you can by:</p>
+        <ul>
+          <li>raising awareness and pointing people to our service</li>
+          <li>helping build partnerships and raise funds</li>
+          <li>being a public face of the organisation and generating media coverage</li>
+        </ul>
+        <p>Allies get support and guidance plus regular updates from a trustee. <a href="/contact/">Get in touch</a> to find out more.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <h2>Safer recruitment</h2>
+      <p>All roles, paid and voluntary, are subject to safer recruitment checks, including references and a DBS check appropriate to the role. We are committed to equal opportunities and welcome applications from every part of the community.</p>
+    </div>
+  </section>
+</Base>

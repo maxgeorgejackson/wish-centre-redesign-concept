@@ -1,0 +1,12 @@
+---
+import Selvedge from './Selvedge.astro';
+const { cloth = 'teal', title, lead, selvedge = 'The Wish Centre · Blackburn with Darwen · since 1989' } = Astro.props;
+---
+<section class:list={['cloth', `cloth--${cloth}`]}>
+  <Selvedge text={selvedge} />
+  <div class="wrap page-field">
+    <h1>{title}</h1>
+    {lead && <p class="lead">{lead}</p>}
+    <slot />
+  </div>
+</section>

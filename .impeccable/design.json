@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T10:40:00Z",
+  "title": "Design System: The Wish Centre",
+  "extensions": {
+    "colorMeta": {
+      "teal": { "role": "primary", "displayName": "Deep Bolt Teal", "tonalRamp": ["#04211f", "#073330", "#0b4f4b", "#14706a", "#2f958e", "#6dbcb5", "#b2ddd8", "#e6f4f2"] },
+      "madder": { "role": "secondary", "displayName": "Madder Pink", "tonalRamp": ["#3d0619", "#650b2b", "#a8144a", "#c83a6b", "#de6f95", "#eda1bb", "#f8d7e2", "#fdf0f4"] },
+      "saffron": { "role": "secondary", "displayName": "Saffron", "tonalRamp": ["#3a2205", "#6b3d06", "#a95c08", "#e8820c", "#f3a24a", "#f8c287", "#fce0c2", "#fef3e7"] },
+      "indigo": { "role": "secondary", "displayName": "Indigo Bolt", "tonalRamp": ["#0b1030", "#151d4f", "#23307a", "#3b4ba0", "#6574c0", "#97a2da", "#d4d9f3", "#eef0fb"] },
+      "marigold": { "role": "accent", "displayName": "Marigold (call and exit only)", "tonalRamp": ["#4a3a00", "#7d6200", "#c29a00", "#ffd23f", "#ffe17a", "#ffeaa6", "#fff3d1", "#fffaeb"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "tonalRamp": ["#0a0b0e", "#15171c", "#2b2f38", "#4a4f59", "#6a6f78", "#9a9ea6", "#cfd1d5", "#eeeff1"] },
+      "cotton": { "role": "neutral", "displayName": "Unbleached Cotton", "tonalRamp": ["#5a5446", "#8a8270", "#b8b09e", "#d8d2c6", "#e8e3d8", "#f3efe7", "#f8f6f1", "#fdfcfa"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page headlines." },
+      "number": { "displayName": "Number", "purpose": "Phone numbers in the call button; tabular, narrowed." },
+      "selvedge": { "displayName": "Selvedge", "purpose": "Printed edge strip and vertical bolt labels; decorative, aria-hidden." },
+      "body": { "displayName": "Body", "purpose": "Reading text, max 68ch." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Bolt unroll (420ms) and state transitions (160ms)." }
+    ],
+    "breakpoints": [
+      { "name": "narrow", "value": "640px" },
+      { "name": "split", "value": "820px" },
+      { "name": "nav", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Call Button",
+      "kind": "button",
+      "refersTo": "call-button",
+      "description": "Marigold tel: link with label and large tabular number. The only marigold control besides Exit.",
+      "html": "<a class=\"ds-call\" href=\"tel:03005610440\"><span class=\"ds-call-label\">Call The Wish Centre</span><span class=\"ds-call-num\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z\"/></svg> 0300 561 0440</span></a>",
+      "css": ".ds-call{display:inline-flex;flex-direction:column;background:#ffd23f;color:#15171c;text-decoration:none;padding:.85rem 1.4rem .95rem;font-family:var(--font-display);font-weight:800;line-height:1}.ds-call:hover{background:#ffe17a}.ds-call:focus-visible{outline:3px solid #15171c;outline-offset:2px;box-shadow:0 0 0 6px #ffd23f}.ds-call-label{font-size:.95rem;font-weight:600;margin-bottom:.3rem}.ds-call-num{font-size:2.6rem;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:.6rem}.ds-call svg{width:.8em;height:.8em}"
+    },
+    {
+      "name": "Exit Bar",
+      "kind": "nav",
+      "description": "Sticky ink bar with the 999 reminder and full-height marigold Exit site button.",
+      "html": "<div class=\"ds-exit\"><p>In danger now? Call <a href=\"tel:999\">999</a>.</p><a class=\"ds-exit-btn\" href=\"https://www.bbc.co.uk/weather\">Exit site</a></div>",
+      "css": ".ds-exit{display:flex;justify-content:space-between;align-items:center;background:#15171c;color:#e7e8ea;min-height:3rem;padding-left:1.5rem}.ds-exit p{margin:0}.ds-exit a{color:#fff;font-weight:700}.ds-exit-btn{align-self:stretch;display:flex;align-items:center;background:#ffd23f;color:#15171c!important;padding:0 1.5rem;font-weight:800;text-decoration:none}.ds-exit-btn:hover{background:#ffe17a}"
+    },
+    {
+      "name": "Ink Outline Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Default secondary action on light grounds.",
+      "html": "<a class=\"ds-btn-ink\" href=\"#\">All services →</a>",
+      "css": ".ds-btn-ink{display:inline-flex;align-items:center;gap:.6em;padding:.9rem 1.35rem;border:2px solid #15171c;color:#15171c;font-weight:700;text-decoration:none;transition:background-color 160ms cubic-bezier(.16,1,.3,1),color 160ms}.ds-btn-ink:hover{background:#15171c;color:#fff}.ds-btn-ink:focus-visible{outline:3px solid #15171c;outline-offset:2px;box-shadow:0 0 0 6px #ffd23f}"
+    },
+    {
+      "name": "Bolt",
+      "kind": "custom",
+      "description": "Tall cloth field for one audience; sub-links unroll on hover or focus.",
+      "html": "<div class=\"ds-bolt\"><a href=\"#\" class=\"ds-bolt-name\">I need help</a><span class=\"ds-bolt-sub\">Refuge, outreach and staying safe</span><ul class=\"ds-bolt-more\"><li><a href=\"#\">Am I in danger?</a></li><li><a href=\"#\">All our services</a></li></ul></div>",
+      "css": ".ds-bolt{background:#a8144a;color:#fff;min-height:22rem;width:14rem;display:flex;flex-direction:column;justify-content:flex-end;padding:1.25rem 1.1rem 1.5rem}.ds-bolt-name{font-size:2rem;font-weight:800;line-height:1;color:#fff;text-decoration:none}.ds-bolt-sub{color:#f8d7e2;margin-top:.45rem}.ds-bolt-more{list-style:none;padding:0;margin:0;border-top:2px solid #fff;clip-path:inset(0 0 100% 0);max-height:0;transition:clip-path 420ms cubic-bezier(.16,1,.3,1),max-height 420ms}.ds-bolt:hover .ds-bolt-more,.ds-bolt:focus-within .ds-bolt-more{clip-path:inset(0);max-height:12rem;margin-top:1rem}.ds-bolt-more a{color:#fff;font-weight:700;display:block;padding:.5rem 0}"
+    },
+    {
+      "name": "Ruled Row",
+      "kind": "custom",
+      "description": "Swatch, title and text in a ruled list; the system's replacement for cards.",
+      "html": "<ul class=\"ds-rows\"><li><span class=\"ds-sw\"></span><h3>Refuge</h3><p>Safe, self-contained homes for women and children.</p></li></ul>",
+      "css": ".ds-rows{list-style:none;padding:0;margin:0;border-top:2px solid #15171c}.ds-rows li{display:grid;grid-template-columns:1.1rem 12rem 1fr;gap:1.6rem;padding:1.4rem 0;border-bottom:1px solid #d8d2c6}.ds-rows h3{margin:0}.ds-rows p{margin:0}.ds-sw{width:1.1rem;height:1.1rem;background:#a8144a;margin-top:.35rem}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Square white field with 2px ink border.",
+      "html": "<label class=\"ds-field\">Email<input type=\"email\"></label>",
+      "css": ".ds-field{display:grid;gap:.35rem;font-weight:700}.ds-field input{font:inherit;font-weight:400;border:2px solid #15171c;border-radius:0;padding:.7rem .8rem;background:#fff}.ds-field input:focus-visible{outline:3px solid #15171c;outline-offset:2px;box-shadow:0 0 0 6px #ffd23f}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Cloth Shop Wall",
+    "overview": "A wall of dyed cotton bolts from Blackburn's fabric shops: each audience gets its own bolt of colour, and help is always the first and largest. Fields are flat and sealed; the printed selvedge carries wayfinding. Warm, plain-spoken and steady, never clinical, corporate or fundraising-led.",
+    "keyCharacteristics": ["Four cloth colours as whole fields", "Marigold only for call and exit", "Square corners, ruled rows, no cards", "Sticky exit bar and Esc on every page", "Phone numbers as tabular, tap-to-call data"],
+    "rules": [
+      { "name": "The Marigold Rule", "body": "Marigold is only for calling or leaving.", "section": "colors" },
+      { "name": "The Sealed Field Rule", "body": "No gradients, glows, blurs or shadows.", "section": "elevation" },
+      { "name": "The Help First Rule", "body": "Help comes before fundraising in reading order and size.", "section": "colors" },
+      { "name": "The No Eyebrow Rule", "body": "Headings stand alone; no kicker labels.", "section": "typography" }
+    ],
+    "dos": ["Do keep each audience's cloth colour consistent", "Do make every phone number a tel: link in tabular figures", "Do keep help pages image-free", "Do flag unconnected links and forms as PLACEHOLDER"],
+    "donts": ["Don't use marigold for decoration or donations", "Don't add gradients, shadows or rounded corners", "Don't put fundraising above help", "Don't add tracking or third-party scripts"]
+  }
+}

@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import PageField from '../components/PageField.astro';
+import Icon from '../components/Icon.astro';
+import services from '../data/services.json';
+
+const cloths = ['madder', 'teal', 'indigo', 'saffron'];
+---
+<Base title="Our services" description="Refuge, IDVA advocacy, outreach, counselling, recovery programmes, children's services, behaviour change and training from The Wish Centre in Blackburn with Darwen.">
+  <PageField cloth="madder" title="Our services, in full" lead="The detail for professionals, partners and anyone who wants it. If you need help right now, the short version is on our I need help page.">
+    <p style="margin-top:2rem"><a class="btn btn--light" href="/need-help/">I need help now <Icon name="arrow" /></a></p>
+  </PageField>
+
+  <section class="section">
+    <div class="wrap">
+      <ul class="rows services">
+        {services.map((s, i) => (
+          <li id={s.id}>
+            <span class="swatch" style={`--sw: var(--${cloths[i % cloths.length]})`}></span>
+            <h2 class="svc__name">{s.name}</h2>
+            <div>
+              <p>{s.body}</p>
+              {s.link && <p><a href={s.link}>More about {s.name.toLowerCase()}</a></p>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .svc__name { font-size: clamp(1.35rem, 1.15rem + 0.7vw, 1.8rem); margin: 0; }
+  .services li { scroll-margin-top: calc(var(--exit-h) + 1rem); }
+</style>

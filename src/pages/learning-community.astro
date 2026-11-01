@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import PageField from '../components/PageField.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site.js';
+
+const offers = [
+  { name: 'HR and employer training', body: '1 in 4 adults in the UK will experience domestic abuse at some point in their life. We help HR teams and managers recognise warning signs, understand the impact on employees, and respond with compassion and practical guidance.' },
+  { name: 'Schools and colleges', body: 'Healthy relationships education and workshops for young people, plus safeguarding training for teachers and youth workers, delivered in partnership with Blackburn with Darwen Borough Council.' },
+  { name: 'Bespoke and CPD training', body: 'Ready-made domestic abuse training packages, or training developed for your organisation on request. Suitable for CPD.' },
+  { name: 'Community programmes', body: 'Engagement activities and recovery programmes across the community, supporting long-term independence beyond the point of crisis.' },
+];
+---
+<Base title="Training and community" description="Domestic abuse training for schools, colleges, employers and professionals in Blackburn with Darwen: healthy relationships, HR, safeguarding and CPD.">
+  <PageField cloth="saffron" title="Training that helps people spot the signs, and respond well" lead={`We work with schools, colleges, employers and professionals across ${site.area} to build understanding of domestic abuse and the confidence to respond safely.`} selvedge="Schools · Employers · Professionals · CPD">
+    <p style="margin-top:2rem"><a class="btn btn--ink" href="#enquire">Enquire about training <Icon name="arrow" /></a></p>
+  </PageField>
+
+  <section class="section">
+    <div class="wrap split">
+      <h2>What we offer</h2>
+      <ul class="rows">
+        {offers.map((o) => (
+          <li><span class="swatch" style="--sw: var(--saffron)"></span><h3>{o.name}</h3><p>{o.body}</p></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="cloth cloth--cotton section" id="enquire">
+    <div class="wrap split">
+      <div>
+        <h2>Book a session or ask about our training plan</h2>
+        <p>Tell us about your organisation and what you need, and we'll get back to you. Or email <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+      </div>
+      <div>
+        <p class="placeholder-note"><strong>PLACEHOLDER:</strong> this form is not connected yet. Until it is, please email <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+        <form class="form" onsubmit="return false" style="margin-top:1.5rem">
+          <label>Organisation<input name="organisation" autocomplete="organization" /></label>
+          <label>Email<input name="email" type="email" autocomplete="email" /></label>
+          <label>What training are you interested in?<textarea name="message"></textarea></label>
+          <div><button class="btn btn--solid" type="submit" disabled>Send enquiry</button></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,20 @@
+{
+  "factsheets": [
+    { "title": "Public factsheets", "body": "In English, Arabic, Bulgarian, Latvian, Polish, Punjabi, Romanian and Urdu, so language is never a barrier to understanding what domestic abuse is and where to get help.", "url": "PLACEHOLDER" },
+    { "title": "Professional factsheets", "body": "Guidance for employees and employers, frontline professionals and other services who may meet someone experiencing abuse.", "url": "PLACEHOLDER" },
+    { "title": "For children and young people", "body": "Age-appropriate materials to help children and young people understand abuse and know how to get help.", "url": "PLACEHOLDER" },
+    { "title": "For adults", "body": "Guidance and self-help materials for adults affected by domestic abuse, whether in crisis now or further along in recovery.", "url": "PLACEHOLDER" }
+  ],
+  "numbers": [
+    { "name": "Samaritans", "number": "116 123", "tel": "116123", "note": "Open 24 hours" },
+    { "name": "CALM (Campaign Against Living Miserably)", "number": "0800 58 58 58", "tel": "0800585858", "note": "Phone or webchat, 5pm to midnight, every day" },
+    { "name": "SHOUT crisis text service", "number": "Text 85258", "sms": "85258" },
+    { "name": "Papyrus (prevention of young suicide)", "number": "0800 068 4141", "tel": "08000684141", "note": "9am–10pm weekdays, 2pm–10pm weekends" },
+    { "name": "Young Minds parents and carers helpline", "number": "0808 802 5544", "tel": "08088025544" },
+    { "name": "FRANK (drugs helpline)", "number": "0300 123 6600", "tel": "03001236600", "note": "Or text 82111" },
+    { "name": "NHS Lancashire and South Cumbria: East and Pennine Lancashire", "number": "0800 0130 707", "tel": "08000130707" },
+    { "name": "NHS Lancashire and South Cumbria: Central and West Lancashire", "number": "0800 0130 708", "tel": "08000130708" },
+    { "name": "NHS Lancashire and South Cumbria: Blackpool, Fylde and Wyre", "number": "0800 0130 709", "tel": "08000130709" },
+    { "name": "NHS Lancashire and South Cumbria: North Lancashire, Morecambe Bay and South Cumbria", "number": "0800 013 0710", "tel": "08000130710" }
+  ]
+}

@@ -1,0 +1,55 @@
+---
+import Icon from './Icon.astro';
+import { nav } from '../data/site.js';
+const path = Astro.url.pathname;
+---
+<header class="fascia">
+  <div class="wrap fascia__inner">
+    <a href="/" class="fascia__logo">
+      <img src="/images/logo.png" alt="The Wish Centre, home" width="344" height="172" />
+    </a>
+    <button class="fascia__toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu>
+      <Icon name="menu" /><span>Menu</span>
+    </button>
+    <nav id="site-nav" class="fascia__nav" aria-label="Main">
+      <ul>
+        {nav.map((item) => (
+          <li>
+            <a href={item.href} style={`--c: var(--${item.cloth})`}
+              aria-current={path.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+<style>
+  .fascia { background: var(--paper); border-bottom: 1px solid var(--rule); }
+  .fascia__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 5.25rem; }
+  .fascia__logo img { height: 3.6rem; width: auto; }
+  .fascia__nav ul { list-style: none; display: flex; gap: clamp(0.9rem, 2vw, 2rem); margin: 0; padding: 0; }
+  .fascia__nav a {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.08rem;
+    font-variation-settings: 'wdth' 92;
+    text-decoration: none; padding: 0.4rem 0;
+    border-bottom: 4px solid transparent;
+  }
+  .fascia__nav a:hover, .fascia__nav a[aria-current='page'] { border-bottom-color: var(--c); }
+  .fascia__toggle {
+    display: none; align-items: center; gap: 0.5rem;
+    font: inherit; font-weight: 700; background: none; color: var(--ink);
+    border: 2px solid var(--ink); padding: 0.55rem 0.85rem; cursor: pointer;
+  }
+  .fascia__toggle :global(svg) { width: 1.2rem; height: 1.2rem; }
+  @media (max-width: 900px) {
+    .fascia__inner { flex-wrap: wrap; min-height: 4.5rem; }
+    .fascia__logo img { height: 3rem; }
+    .fascia__toggle { display: inline-flex; }
+    :global(.js) .fascia__nav { display: none; flex-basis: 100%; }
+    :global(.js) .fascia__nav.is-open { display: block; }
+    .fascia__nav ul { flex-direction: column; gap: 0; padding-bottom: 1rem; }
+    .fascia__nav li { border-top: 1px solid var(--rule); }
+    .fascia__nav a { display: block; padding: 0.85rem 0; border-bottom: 0; }
+    .fascia__nav a[aria-current='page'] { text-decoration: underline; text-decoration-color: var(--c); text-decoration-thickness: 4px; }
+  }
+</style>

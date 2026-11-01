@@ -1,0 +1,46 @@
+---
+import '@fontsource-variable/bricolage-grotesque/wdth.css';
+import '@fontsource-variable/atkinson-hyperlegible-next';
+import '../styles/global.css';
+import ExitBar from '../components/ExitBar.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site.js';
+
+const {
+  title,
+  description = `${site.name} supports anyone affected by domestic abuse in ${site.area}, with refuge, advocacy, counselling and recovery support. Free and confidential.`,
+} = Astro.props;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Domestic abuse support in ${site.area}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:url" content={canonical} />
+    <!-- PLACEHOLDER: add /images/og-wish-centre.png (1200x630) and og:image tags -->
+    <meta name="theme-color" content="#0b4f4b" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <ExitBar />
+    <Header />
+    <main id="main"><slot /></main>
+    <Footer />
+    <script>
+      import '../scripts/site.js';
+    </script>
+  </body>
+</html>

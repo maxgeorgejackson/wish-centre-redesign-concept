@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import PageField from '../components/PageField.astro';
+import Icon from '../components/Icon.astro';
+
+const stories = [
+  { name: "Emma's story", body: "Emma experienced physical abuse and sexual exploitation as a child, and later faced partner abuse during pregnancy. Trusting services wasn't easy at first, given her past trauma, but she gradually engaged with support from an IDVA and an outreach worker. After moving into a mother-and-baby placement and securing her own tenancy, she achieved safety and independence. Emma now volunteers with The Wish Centre, using her lived experience to support others." },
+  { name: "Aisha's story", body: "A family was moved into refuge after the mother reported child sexual abuse by the paternal grandfather. The mother had already lived through extensive trauma in her home country, including her brother's kidnapping and her own mother's murder. Within her marriage she endured a decade of emotional, verbal and physical abuse and coercive control. Since entering refuge she has worked with several support services, obtained a Non-Molestation Order, and begun education and community integration, though concerns about future contact arrangements through the family courts continue." },
+  { name: 'Memories from Childhood', body: 'A poem by a 52-year-old man, reflecting on witnessing domestic abuse against his mother when he was a child: a reminder of how this trauma can echo for decades, and why early support for children matters.' },
+];
+---
+<Base title="Survivor stories" description="Stories shared with permission by people The Wish Centre has supported.">
+  <PageField cloth="indigo" title="Survivor stories" lead="Shared with permission to help others understand what support can look like. Some details are changed to protect identities." selvedge="Shared with permission" />
+
+  <section class="section">
+    <div class="wrap">
+      <p class="placeholder-note"><strong>PLACEHOLDER:</strong> confirm current consent to publish each story before launch.</p>
+      <div class="stories">
+        {stories.map((s) => (
+          <article class="story">
+            <h2>{s.name}</h2>
+            <p>{s.body}</p>
+          </article>
+        ))}
+      </div>
+      <p style="margin-top:2rem">These accounts involve IDVA support, refuge, trauma-informed care, safety planning and multi-agency working: <a href="/services/">the same services described on our services page</a>.</p>
+      <p><a class="btn btn--ink" href="/support-us/">Support this work <Icon name="arrow" /></a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .stories { margin-top: 2.5rem; border-top: 2px solid var(--ink); }
+  .story { display: grid; grid-template-columns: minmax(0, 18rem) minmax(0, 1fr); gap: 1rem clamp(2rem, 5vw, 5rem); padding: 2rem 0; border-bottom: 1px solid var(--rule); }
+  .story h2 { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem); margin: 0; }
+  .story p { font-size: 1.2rem; margin: 0; }
+  @media (max-width: 820px) { .story { grid-template-columns: 1fr; } }
+</style>

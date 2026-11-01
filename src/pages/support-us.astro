@@ -1,0 +1,102 @@
+---
+import Base from '../layouts/Base.astro';
+import PageField from '../components/PageField.astro';
+import Icon from '../components/Icon.astro';
+import giving from '../data/giving.json';
+
+const isPlaceholder = (u) => !u || u === 'PLACEHOLDER';
+---
+<Base title="Support us" description="Donate, fundraise or partner with The Wish Centre. See what your gift buys for families in refuge in Blackburn with Darwen.">
+  <PageField cloth="indigo" title="Your support funds safety, recovery and independence" lead="From emergency alarms to therapeutic support for children in refuge, every donation has a direct, visible impact." selvedge="Donate · Fundraise · Partner">
+    <p class="actions">
+      {isPlaceholder(giving.donateUrl)
+        ? <span class="placeholder">PLACEHOLDER: donate link not connected</span>
+        : <a class="btn btn--light" href={giving.donateUrl}>Donate now <Icon name="arrow" /></a>}
+      <a class="btn btn--light" href="#partners">Corporate partnerships <Icon name="arrow" /></a>
+    </p>
+  </PageField>
+
+  <section class="section">
+    <div class="wrap split">
+      <h2>What your donation buys</h2>
+      <ul class="phones gifts">
+        {giving.amounts.map((a) => (
+          <li><span class="num">{a.amount}</span><span>{a.buys}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="cloth cloth--cotton section" id="give">
+    <div class="wrap split">
+      <h2>Ways to give</h2>
+      <ul class="rows">
+        <li>
+          <span class="swatch" style="--sw: var(--indigo)"></span><h3>One-off or monthly</h3>
+          <div><p>Give by debit or credit card online, with the option of a monthly gift.</p>
+          {isPlaceholder(giving.donateUrl) ? <span class="placeholder">PLACEHOLDER: donate link</span> : <a href={giving.donateUrl}>Donate online</a>}</div>
+        </li>
+        <li>
+          <span class="swatch" style="--sw: var(--indigo)"></span><h3>Text to donate</h3>
+          <div><p>Text <strong>WISH</strong> to:</p>
+          <ul class="codes">{giving.textCodes.map((c) => <li><strong>{c.code}</strong> to give {c.amount}</li>)}</ul></div>
+        </li>
+        <li>
+          <span class="swatch" style="--sw: var(--indigo)"></span><h3>JustGiving and Give as You Live</h3>
+          <div><p>Donate directly or set up your own fundraising page, or shop with 4,000+ retailers at no extra cost through Give as You Live.</p>
+          {isPlaceholder(giving.justGivingUrl) && <span class="placeholder">PLACEHOLDER: JustGiving link</span>}</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="partners">
+    <div class="wrap split">
+      <div>
+        <h2>Corporate partnerships</h2>
+        <p>Become a Patron, our Charity of the Year, or build a cause-related partnership with us.</p>
+      </div>
+      <div>
+        <h3>What partners receive</h3>
+        <ul>
+          <li>Our expertise in domestic abuse, honour-based violence, forced marriage and FGM, plus policy and staff champion training</li>
+          <li>Recognition for social responsibility with your staff and community</li>
+          <li>A dedicated fundraising team, PR support and social media amplification</li>
+          <li>Access to our established networks</li>
+          <li>Staff volunteering opportunities that build team cohesion</li>
+        </ul>
+        <h3 style="margin-top:2rem">Get in touch</h3>
+        <ul class="phones">
+          {giving.contacts.map((c) => (
+            <li>
+              <span><strong>{c.role}</strong>{c.name && <span class="note">{c.name}</span>}</span>
+              <span><a href={`mailto:${c.email}`}>{c.email}</a>{c.phone && <><br /><a href={`tel:${c.tel}`}>{c.phone}</a></>}</span>
+            </li>
+          ))}
+        </ul>
+        <p style="margin-top:1.5rem">Recent supporters include Haydock Finance, Blackburn Chemicals and local police.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cloth cloth--saffron section">
+    <div class="wrap split">
+      <h2>Fundraise for us</h2>
+      <div>
+        <ul class="rows">
+          <li><span class="swatch" style="--sw: var(--ink)"></span><h3>Challenge events</h3><p>Take on the Winnie Challenge (raise £150, £300 or £500 and receive a cuddly Winnie Bear) or join a group walk such as Walking The Big One at Blackpool Pleasure Beach.</p></li>
+          <li><span class="swatch" style="--sw: var(--ink)"></span><h3>Your own idea</h3><p>Bake sale, fun run, non-uniform day, quiz night, music night, collection tins, or a birthday or wedding fundraiser. Fundraising and quiz night packs are available.</p></li>
+          <li><span class="swatch" style="--sw: var(--ink)"></span><h3>Your own JustGiving page</h3><p>Set up a page, share it and track donations online. Email <a href="mailto:fundraising@thewishcentre.org">fundraising@thewishcentre.org</a> to get started.</p></li>
+        </ul>
+        <p style="margin-top:1.5rem"><a class="btn btn--ink" href="/survivor-stories/">Read survivor stories <Icon name="arrow" /></a></p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-top: 2rem; }
+  .gifts li { justify-content: flex-start; gap: 0.25rem 2rem; }
+  .gifts .num { min-width: 5.5rem; }
+  .codes { list-style: none; padding: 0; margin: 0 0 1em; }
+</style>

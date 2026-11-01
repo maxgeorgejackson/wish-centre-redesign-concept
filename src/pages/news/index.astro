@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageField from '../../components/PageField.astro';
+import news from '../../data/news.json';
+
+const isPlaceholder = (u) => !u || u === 'PLACEHOLDER';
+---
+<Base title="News" description="Updates, campaigns and stories from The Wish Centre.">
+  <PageField cloth="teal" title="News and campaigns" lead="Updates, awareness campaigns and stories from The Wish Centre." />
+
+  <section class="section">
+    <div class="wrap">
+      <p class="placeholder-note"><strong>PLACEHOLDER:</strong> article pages and dates still to be added. Add items in <code>src/data/news.json</code>.</p>
+      <ul class="news">
+        {news.map((n) => (
+          <li>
+            <span class="tag">{n.tag}</span>
+            <div>
+              <h2>{isPlaceholder(n.url) ? n.title : <a href={n.url}>{n.title}</a>}</h2>
+              <p>{n.summary}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .news { list-style: none; padding: 0; margin: 2.5rem 0 0; border-top: 2px solid var(--ink); }
+  .news li { max-width: none; display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 0.5rem 2rem; padding: 1.6rem 0; border-bottom: 1px solid var(--rule); }
+  .news h2 { font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem); line-height: 1.2; margin: 0 0 0.4rem; letter-spacing: -0.015em; }
+  .news p { margin: 0; }
+  .tag { font-family: var(--font-display); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); padding-top: 0.35rem; }
+  @media (max-width: 640px) { .news li { grid-template-columns: 1fr; } }
+</style>
